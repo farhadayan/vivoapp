@@ -1,0 +1,26 @@
+<ng-container *ngIf="_sidenavState.state$ | async as navState">
+
+<!-- <ng-container *ngIf="user$ | async as user"> -->
+    
+      <nav *ngIf="_sidenavState.sidenavConfig$ | async as sidenavConfig">
+        <ng-container *ngFor="let navItem of sidenavConfig">
+          
+          <a
+            [class.opened]="navItem.open"
+            [routerLink]="[navItem.link]"
+            routerLinkActive
+            #rla="routerLinkActive"
+            >
+            <img [src]="navItem.icon"/>
+            {{ navItem.title }}
+          </a>
+        </ng-container>
+      </nav>
+      <div class="layout-content">
+        <main class="main">
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+    </ng-container>
+
+<!-- </ng-container> -->
